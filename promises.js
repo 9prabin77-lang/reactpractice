@@ -29,3 +29,4 @@ let kasamkhau = ()=>{
 }
 
 kasamkhau()
+// callback hell problems solution: async and await this async and await makes code looks like synchronous programming. but actually is asynchronous programming
