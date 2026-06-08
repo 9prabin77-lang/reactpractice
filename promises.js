@@ -30,3 +30,23 @@ let kasamkhau = ()=>{
 
 kasamkhau()
 // callback hell problems solution: async and await this async and await makes code looks like synchronous programming. but actually is asynchronous programming
+
+let kasamasync =async =>{
+    console.log("starting async fiunction")
+    try{
+         let res= await promises
+         if (res=""){
+            throw "timle promise khako xaina"
+         }
+    console.log("after promises ", res)
+    }
+    catch(e){
+        console.log("error on async/await: ",e)
+    }
+    finally{
+        console.log("finally called")
+    }
+}
+kasamasync()
+
+
