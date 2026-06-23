@@ -10,10 +10,10 @@ let Themeswitch=()=>{
     return(
         <div>
         <h1>Theme Switch</h1>
-        <div className={`container ${lighttheme ? "light" : "dark"}`}>
+        <div className={`container ${lighttheme ? "red" : "blue"}`}>
         Hello     
         </div>
-        <button onClick={handleswitch}>Switch To {lighttheme? "dark":"Light"}</button>
+        <button onClick={handleswitch}>Switch To {lighttheme? "Blue":"Red"}</button>
         </div>
     )
     

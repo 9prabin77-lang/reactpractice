@@ -4,9 +4,11 @@
     border-radius: 20px;
     padding: 20px;
     font-size: 30px;
+    /* justify-self: center; */
+    margin: auto;
 }
 
-.light{
+.red{
     background-color: red;
     color: black;
 
@@ -14,7 +16,7 @@
 }
 
 
-.dark{
+.blue{
     background-color: blue;
     color: white;
 
