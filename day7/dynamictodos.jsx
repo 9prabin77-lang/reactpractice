@@ -16,13 +16,30 @@ const DyListTodos =()=>{
 
     let [title,setTitle]=useState("")
     let [desc,setDesc]=useState("")
-    let [date,setDate]=useState(new Date().toISOString().split('T')(0))
-    let [complete,setComplete]=useState("")
+    let [date,setDate]=useState(new Date().toISOString().split('T')[0])
+    let [complete,setComplete]=useState(false)
 
     let handleTitle=(e)=>setTitle(e.target.value)
     let handleDesc=(e)=>setDesc(e.target.value)
     let handleDate=(e)=>setDate(e.target.value)
     let handleComplete=(e)=>setComplete(e.target.checked)
+
+    let handleAddTodo=(e)=>{
+
+        e.preventDefault()
+        let newdatas= [...todos, {
+                id:todos.length + 1,
+                title: title,
+                desc: desc,
+                date: date,
+                complete:complete,
+            }
+        
+    ]
+    setTodos(newdatas)
+    alert(`New Todo ${title} added`)
+
+}
 
     
 
@@ -30,6 +47,7 @@ const DyListTodos =()=>{
         
         <div className="main-container">
             <h1><b>ToDos Form</b></h1>
+            <form onSubmit={handleAddTodo}>
             <div className="todo-form">
                 <label htmlFor="todo-title">Title:
                 <input value={title} onChange={handleTitle} id="todo-title"  type="text" placeholder="enter title"/>
@@ -41,15 +59,17 @@ const DyListTodos =()=>{
                 <input value={date} onChange={handleDate} id="todo-date" type="date"/>
                 </label><br/>
                 <label htmlFor="todo-status">
-                    <input value={complete} onChange={handleComplete} type="checkbox" id="todo-status"/>Completed
+                    <input checked={complete} onChange={handleComplete} type="checkbox" id="todo-status"/>Completed
                 </label><br/>
-                <button>Add ToDo</button>
+                <button type="submit" >Add ToDo</button>
             </div>
+            </form>
             <h2>All ToDos</h2>
             {
             todos.map((el) =>{
                 return(
-                    <div ket={`${el.id}-$[el.title]`}>
+                    <div
+                      key={`${el.id}-$[el.title]`}>
                         <h4>{el.title}</h4>
                         <p>{el.desc}</p>
                         <b>Date; {el.date}</b>
