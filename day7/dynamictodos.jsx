@@ -37,9 +37,18 @@ const DyListTodos =()=>{
         
     ]
     setTodos(newdatas)
-    alert(`New Todo ${title} added`)
+    // alert(`New Todo ${title} added`)
 
-}
+    }
+
+    let handleDelete=(td)=>{
+        let matchTodoIndex = todos.findIndex((ele)=>{
+            return ele.id===td.id
+        })
+
+        todos.splice(matchTodoIndex, 1)
+        setTodos([...todos])
+    }
 
     
 
@@ -59,25 +68,31 @@ const DyListTodos =()=>{
                 <input value={date} onChange={handleDate} id="todo-date" type="date"/>
                 </label><br/>
                 <label htmlFor="todo-status">
-                    <input checked={complete} onChange={handleComplete} type="checkbox" id="todo-status"/>Completed
+                    <input checked={complete} onChange={handleComplete} type="checkbox" id="todo-status"/> Completed
                 </label><br/>
                 <button type="submit" >Add ToDo</button>
             </div>
             </form>
             <h2>All ToDos</h2>
+            <div className="todo-render">
             {
             todos.map((el) =>{
                 return(
-                    <div
-                      key={`${el.id}-$[el.title]`}>
+                    
+                    <div className="todo-card" key={`${el.id}-$[el.title]`}>
                         <h4>{el.title}</h4>
                         <p>{el.desc}</p>
-                        <b>Date; {el.date}</b>
+                        <b>Date: {el.date}</b>
                         <b>Completed:{el.complete? "true" : "false"}</b>
+                        <br/>
+                        <button>Edit</button>
+                        <button onClick={()=>handleDelete(el)}>Delete</button>
                     </div>
+                    
                 )
             })
         }
+        </div>
         </div>
     )
 }
