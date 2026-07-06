@@ -42,12 +42,19 @@ const DyListTodos =()=>{
     }
 
     let handleDelete=(td)=>{
-        let matchTodoIndex = todos.findIndex((ele)=>{
+        let deleteconfirm = window.confirm("Do you really want to delete this ToDo? ")
+       if(deleteconfirm){
+         let matchTodoIndex = todos.findIndex((ele)=>{
             return ele.id===td.id
         })
 
         todos.splice(matchTodoIndex, 1)
         setTodos([...todos])
+        alert(`ToDo : ${td.title}, successfully deleted...`)
+       }
+       else{
+        alert("Deletion Cancelled by User....")
+       }
     }
 
     
