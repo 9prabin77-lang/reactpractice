@@ -7,7 +7,7 @@ const DyListTodos =()=>{
                 id:1,
                 title: "Beautify dynamic List Todo",
                 desc:"complete the CSS",
-                date:"06-30-2026",
+                date:"2026-02-29",
                 complete:false,
             }
         ]
@@ -38,6 +38,7 @@ const DyListTodos =()=>{
     ]
     setTodos(newdatas)
     // alert(`New Todo ${title} added`)
+    resetForm()
 
     }
 
@@ -57,7 +58,24 @@ const DyListTodos =()=>{
        }
     }
 
-    
+    let resetForm = ()=>{
+        setTitle("")
+        setDesc("")
+        setDate(new Date().toISOString().split('T')[0])
+        setComplete(false)
+        seteditTodo(null)
+    }
+
+    let [editTodo, seteditTodo] = useState(null)
+
+    let handleEdit = (td)=>{
+        seteditTodo(td)
+        setTitle(td.title)
+        setDesc(td.desc)
+        setDate(td.date)
+        setComplete(td.complete)
+        
+    }
 
     return(
         
@@ -92,7 +110,7 @@ const DyListTodos =()=>{
                         <b>Date: {el.date}</b>
                         <b>Completed:{el.complete? "true" : "false"}</b>
                         <br/>
-                        <button>Edit</button>
+                        <button onClick={()=>handleEdit(el)}>Edit</button>
                         <button onClick={()=>handleDelete(el)}>Delete</button>
                     </div>
                     
