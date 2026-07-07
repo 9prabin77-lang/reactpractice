@@ -77,11 +77,34 @@ const DyListTodos =()=>{
         
     }
 
+    let handleEditTodo = (e)=>{
+        e.preventDefault()
+        let editId = editTodo.id
+        let matchedtodo = todos.find((td)=>{
+            return td.id === editId
+        })
+
+        if(!matchedtodo){
+            alert("There is no ToDo with ID "+ editId)
+        }
+
+        matchedtodo.title=title
+        matchedtodo.desc=desc
+        matchedtodo.date=date
+        matchedtodo.complete=complete
+
+        setTodos([...todos])
+        alert("ToDo succesfully edited")
+        resetForm()
+
+
+    }
+
     return(
         
         <div className="main-container">
             <h1><b>ToDos Form</b></h1>
-            <form onSubmit={handleAddTodo}>
+            <form onSubmit={ !editTodo ? handleAddTodo: handleEditTodo}>
             <div className="todo-form">
                 <label htmlFor="todo-title">Title:
                 <input value={title} onChange={handleTitle} id="todo-title"  type="text" placeholder="enter title"/>
@@ -95,7 +118,8 @@ const DyListTodos =()=>{
                 <label htmlFor="todo-status">
                     <input checked={complete} onChange={handleComplete} type="checkbox" id="todo-status"/> Completed
                 </label><br/>
-                <button type="submit" >Add ToDo</button>
+                {/* conditional rendering */}
+                <button type="submit" >{!editTodo ? "Add ToDo " : "Edit ToDo"}</button>
             </div>
             </form>
             <h2>All ToDos</h2>
