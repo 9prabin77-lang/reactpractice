@@ -1,8 +1,53 @@
 .userCard {
-    border-radius: 20px;
+    border-radius: 10px;
     border: 2px solid black;
-    width: 250px;
+    width: fit-content;
     justify-self: center;
-    padding: 10px;
+    padding: 5px 15px;
+    text-transform: uppercase;
     margin-bottom: 10px;
+}
+
+.userCard h4{
+    color: blue
+}
+
+.userCard h4 span {
+    color: red
+}
+
+.userContainer{
+    /* border: 2px solid green;
+    margin: 5px; */
+
+
+}
+
+.userContainer h2{
+    font-size:50px;
+    color:#51631b ;
+
+}
+
+#root{
+    background : linear-gradient(#a62bfb,#5ce6d5,#fb2bbf);
+}
+
+.userStatus{
+    border-radius: 10px;
+    border: 2px solid black;
+    width: fit-content;
+    justify-self: center;
+    padding: 4px;
+    text-transform: uppercase;
+    background-color: aquamarine;
+    
+}
+
+.userStatusActive{
+    background-color: blue;
+}
+
+.userStatusInactive{
+    background-color: red;
 }
